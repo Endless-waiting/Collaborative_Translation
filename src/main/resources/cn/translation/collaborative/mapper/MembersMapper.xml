@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.translation.collaborative.mapper.MembersMapper" >
+  <resultMap id="BaseResultMap" type="cn.translation.collaborative.pojo.Members" >
+    <id column="mid" property="mid" jdbcType="INTEGER" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="mname" property="mname" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="institute" property="institute" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+    <result column="team" property="team" jdbcType="VARCHAR" />
+    <result column="titles" property="titles" jdbcType="VARCHAR" />
+    <result column="gid" property="gid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mid, account, mname, password, institute, department, gid, titles
+  </sql>
+  <select id="selectMaxAccountOfMembers" resultType="String">
+    SELECT MAX(account) FROM members
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from members
+    where mid = #{mid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByAccount" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from members
+    where account = #{account,jdbcType=VARCHAR}
+  </select>
+  <select id="selectRoleByAccount" resultType="String" parameterType="java.lang.String" >
+    SELECT role.role from members,`user-role`,role WHERE members.mid = `user-role`.uid AND role.rid = `user-role`.rid and members.account = #{account,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAllMembers" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from members
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from members
+    where mid = #{mid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByAccount" parameterType="java.lang.String">
+    delete from members
+    where account = #{account,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.translation.collaborative.pojo.Members" >
+    insert into members (mid, account, mname, 
+      password, institute, department, 
+      gid, titles)
+    values (#{mid,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{mname,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{institute,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, 
+      #{gid,jdbcType=VARCHAR}, #{titles,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.translation.collaborative.pojo.Members" >
+    insert into members
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mid != null" >
+        mid,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="mname != null" >
+        mname,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="institute != null" >
+        institute,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="gid != null" >
+        gid,
+      </if>
+      <if test="titles != null" >
+        titles,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mid != null" >
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="mname != null" >
+        #{mname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="institute != null" >
+        #{institute,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="gid != null" >
+        #{gid,jdbcType=INTEGER},
+      </if>
+      <if test="titles != null" >
+        #{titles,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.translation.collaborative.pojo.Members" >
+    update members
+    <set >
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="mname != null" >
+        mname = #{mname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="institute != null" >
+        institute = #{institute,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="gid != null" >
+        gid = #{gid,jdbcType=INTEGER},
+      </if>
+      <if test="titles != null" >
+        titles = #{titles,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.translation.collaborative.pojo.Members" >
+    update members
+    set account = #{account,jdbcType=VARCHAR},
+      mname = #{mname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      institute = #{institute,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      team = #{team,jdbcType=VARCHAR},
+      titles = #{titles,jdbcType=VARCHAR},
+      gid = #{gid,jdbcType=INTEGER}
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+</mapper>

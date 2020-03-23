@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.translation.collaborative.mapper.GroupMapper" >
+  <resultMap id="BaseResultMap" type="cn.translation.collaborative.pojo.Group" >
+    <id column="gid" property="gid" jdbcType="INTEGER" />
+    <result column="gname" property="gname" jdbcType="VARCHAR" />
+    <result column="leader" property="leader" jdbcType="VARCHAR" />
+    <result column="members" property="members" jdbcType="VARCHAR" />
+    <result column="book" property="book" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="publisher" property="publisher" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    gid, gname, leader, members, book, author, publisher
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from `group`
+    where gid = #{gid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `group`
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from `group`
+    where gid = #{gid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.translation.collaborative.pojo.Group" >
+    insert into `group` (gid, gname, leader,
+      members, book, author, 
+      publisher)
+    values (#{gid,jdbcType=INTEGER}, #{gname,jdbcType=VARCHAR}, #{leader,jdbcType=INTEGER}, 
+      #{members,jdbcType=VARCHAR}, #{book,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
+      #{publisher,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.translation.collaborative.pojo.Group" >
+    insert into `group`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gid != null" >
+        gid,
+      </if>
+      <if test="gname != null" >
+        gname,
+      </if>
+      <if test="leader != null" >
+        leader,
+      </if>
+      <if test="members != null" >
+        members,
+      </if>
+      <if test="book != null" >
+        book,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="publisher != null" >
+        publisher,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gid != null" >
+        #{gid,jdbcType=INTEGER},
+      </if>
+      <if test="gname != null" >
+        #{gname,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null" >
+        #{leader,jdbcType=INTEGER},
+      </if>
+      <if test="members != null" >
+        #{members,jdbcType=VARCHAR},
+      </if>
+      <if test="book != null" >
+        #{book,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null" >
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.translation.collaborative.pojo.Group" >
+    update `group`
+    <set >
+      <if test="gname != null" >
+        gname = #{gname,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null" >
+        leader = #{leader,jdbcType=INTEGER},
+      </if>
+      <if test="members != null" >
+        members = #{members,jdbcType=VARCHAR},
+      </if>
+      <if test="book != null" >
+        book = #{book,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null" >
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where gid = #{gid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.translation.collaborative.pojo.Group" >
+    update `group`
+    set gname = #{gname,jdbcType=VARCHAR},
+      leader = #{leader,jdbcType=INTEGER},
+      members = #{members,jdbcType=VARCHAR},
+      book = #{book,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      publisher = #{publisher,jdbcType=VARCHAR}
+    where gid = #{gid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,150 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: "Microsoft YaHei", "Segoe UI", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+.container{
+    width: 590px;
+    margin: 0 auto;
+    padding-top: 100px;
+    position: relative;
+}
+.container:after{
+    content: '';
+    display: block;
+    clear:both;
+}
+.container>div{
+    float: left;
+}
+.container .logo{
+    width: 100%;
+    height: 120px;
+    margin: 0 auto 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 120px;
+}
+.container .input{
+    position: relative;
+    width: 500px;
+    height: 44px;
+    border-top: #ccc solid 1px;
+    border-right: none;
+    border-bottom: #ccc solid 1px;
+    border-left: #ccc solid 1px;
+    border-radius: 4px 0 0 4px;
+}
+.container .input>input{
+    outline: none;
+    border: none;
+    padding: 0 80px 0 10px;
+    margin: 0;
+    height: 44px;
+    width: 410px;
+    color: #333;
+    font-size: 16px;
+    border-radius: 4px 0 0 4px;
+}
+.container .input>input::-webkit-input-placeholder{
+    color:#999;
+}
+.container .input .picker{
+    width: 40px;
+    padding-right: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    line-height: 44px;
+    cursor: pointer;
+    color: #999;
+    font-size: 12px;
+    text-align: right;
+    background-image: url("../img/down.png");
+    background-position: 50px center;
+    background-repeat: no-repeat;
+    user-select: none;
+}
+.container .input .picker-list{
+    list-style: none;
+    padding: 5px 0;
+    width: 100px;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    margin: 0;
+    line-height: 26px;
+    font-size: 12px;
+    border-radius: 2px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.2);
+    background-color: #fff;
+    display: none;
+}
+.container .input .picker-list>li{
+    padding-left: 36px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-size: 16px auto;
+}
+.container .input .picker-list>li:hover{
+    background-color: #ebf1f5;
+    cursor: pointer;
+}
+.container .input .hot-list{
+    padding: 10px 0;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    margin: 0;
+    line-height: 32px;
+    font-size: 14px;
+    border-radius: 2px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.2);
+    background-color: #fff;
+    display: none;
+}
+.container .input .hot-list>a{
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 0 10px;
+    overflow: hidden;
+}
+.container .input .hot-list>a:hover{
+    background-color: #f3f3f3;
+}
+.container .input .hot-list>a>div{
+    float: left;
+}
+.container .input .hot-list>a>div.number{
+    text-align: center;
+    width: 40px;
+}
+.container .search{
+    width: 89px;
+    height: 46px;
+    background-color: #08f;
+    background-image: url("../img/search.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+#u1 a:link,#u1 a:visited{color:#666;text-decoration:none}
+#u1 a:hover,#u1 a:active{text-decoration:underline}
+#u1 a:active{color:#00c}
+#u1{z-index:2;color:#fff;position:absolute;right:0;top:0;margin:19px 0 5px;padding:0 96px 0 0}
+#u1 .reg{display:none}
+#u1 a.pf,#u1 a.pf:visited{display:inline-block;float:left;color:#333;line-height:24px;font-size:13px;margin-left:20px;overflow:hidden;text-decoration:underline}
+#u1 a.lb,#u1 a.lb:visited,#u1 a.username{display:inline-block;float:left;color:#333;font-size:13px;line-height:24px;margin-left:20px;text-decoration:underline}
+#u1 a.bri,#u1 a.bri:visited{display:inline-block;position:absolute;right:10px;width:60px;height:23px;float:left;color:#fff;background:#38f;line-height:24px;font-size:13px;text-align:center;overflow:hidden;border-bottom:1px solid #38f;margin-left:19px;margin-right:2px}
+#u1 a.bri.brihover{display:none;text-decoration:none;color:#333;background:0 0;border-bottom:1px solid transparent;margin-left:19px}
+#u1 #lm a{color:#00c;text-decoration:underline}
+#u1 a.mnav,#u1 a.mnav:visited{float:left;color:#333;font-weight:700;line-height:24px;margin-left:20px;font-size:13px;text-decoration:underline}
+#u1 a.mnav.sp,#u1 a.mnav.sp:visited{color:#F23F40;position:relative}
+#u1 a.mnav.sp.dot::before{content:' ';position:absolute;width:6px;height:6px;background-color:#F23F40;border-radius:50%;top:3px;right:-6px}
+#u1 a.pf:hover,#u1 a.lb:hover,#u1 a.mnav:hover{color:#00c}

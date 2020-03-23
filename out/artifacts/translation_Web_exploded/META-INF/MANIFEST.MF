@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: Acer
+Build-Jdk: 1.8.0_161
+Implementation-Title: translation
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: cn.ac.iie
+Main-Class: ${start-class}
+

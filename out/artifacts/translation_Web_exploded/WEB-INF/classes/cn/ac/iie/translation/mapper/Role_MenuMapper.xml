@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.translation.collaborative.mapper.Role_MenuMapper" >
+  <resultMap id="BaseResultMap" type="cn.translation.collaborative.pojo.Role_Menu" >
+    <result column="rid" property="rid" jdbcType="INTEGER" />
+    <result column="mid" property="mid" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.translation.collaborative.pojo.Role_Menu" >
+    insert into role-menu (rid, mid)
+    values (#{rid,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.translation.collaborative.pojo.Role_Menu" >
+    insert into role-menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        rid,
+      </if>
+      <if test="mid != null" >
+        mid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="mid != null" >
+        #{mid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

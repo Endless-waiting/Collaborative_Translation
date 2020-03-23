@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.translation.collaborative.mapper.MenuMapper" >
+  <resultMap id="BaseResultMap" type="cn.translation.collaborative.pojo.Menu" >
+    <id column="mid" property="mid" jdbcType="INTEGER" />
+    <result column="superior_menu" property="superiorMenu" jdbcType="INTEGER" />
+    <result column="mname" property="mname" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="open" property="open" jdbcType="INTEGER" />
+    <result column="isParent" property="isparent" jdbcType="INTEGER" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mid, superior_menu, mname, url, open, isParent, icon
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where mid = #{mid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from menu
+    where mid = #{mid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.translation.collaborative.pojo.Menu" >
+    insert into menu (mid, superior_menu, mname, 
+      url, open, isParent, 
+      icon)
+    values (#{mid,jdbcType=INTEGER}, #{superiorMenu,jdbcType=INTEGER}, #{mname,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{open,jdbcType=INTEGER}, #{isparent,jdbcType=INTEGER}, 
+      #{icon,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.translation.collaborative.pojo.Menu" >
+    insert into menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mid != null" >
+        mid,
+      </if>
+      <if test="superiorMenu != null" >
+        superior_menu,
+      </if>
+      <if test="mname != null" >
+        mname,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="open != null" >
+        open,
+      </if>
+      <if test="isparent != null" >
+        isParent,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mid != null" >
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="superiorMenu != null" >
+        #{superiorMenu,jdbcType=INTEGER},
+      </if>
+      <if test="mname != null" >
+        #{mname,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="open != null" >
+        #{open,jdbcType=INTEGER},
+      </if>
+      <if test="isparent != null" >
+        #{isparent,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.translation.collaborative.pojo.Menu" >
+    update menu
+    <set >
+      <if test="superiorMenu != null" >
+        superior_menu = #{superiorMenu,jdbcType=INTEGER},
+      </if>
+      <if test="mname != null" >
+        mname = #{mname,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="open != null" >
+        open = #{open,jdbcType=INTEGER},
+      </if>
+      <if test="isparent != null" >
+        isParent = #{isparent,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.translation.collaborative.pojo.Menu" >
+    update menu
+    set superior_menu = #{superiorMenu,jdbcType=INTEGER},
+      mname = #{mname,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      open = #{open,jdbcType=INTEGER},
+      isParent = #{isparent,jdbcType=INTEGER},
+      icon = #{icon,jdbcType=VARCHAR}
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+</mapper>
